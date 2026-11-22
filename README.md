@@ -1,163 +1,135 @@
-# EggBot
+# EggBot IoT Plotter · Egg Studio
 
-![Arduino](https://img.shields.io/badge/Arduino-Robotnik-149ddd?style=for-the-badge) ![C++](https://img.shields.io/badge/C%2B%2B-Robotnik-149ddd?style=for-the-badge) ![Robótica](https://img.shields.io/badge/Robótica-Robotnik-149ddd?style=for-the-badge) ![Controle de movimento](https://img.shields.io/badge/Controle%20de%20movimento-Robotnik-149ddd?style=for-the-badge) ![Divulgação científica](https://img.shields.io/badge/Divulgação%20científica-Robotnik-149ddd?style=for-the-badge)
+Desenhe no navegador, visualize o traço na superfície de um ovo e prepare um trabalho para o EggBot. O projeto reúne uma interface em **React + Tailwind**, um controlador web para **ESP32** e o firmware **EggDuino para Arduino Uno**.
 
-> Robô demonstrativo para pintura e desenho em ovos, usado como projeto de robótica, controle de movimento e divulgação científica.
+![Arduino](https://img.shields.io/badge/Arduino-Uno-149ddd?style=for-the-badge)
+![ESP32](https://img.shields.io/badge/ESP32-IoT-E7352C?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-Plotter-3776AB?style=for-the-badge)
+![Web](https://img.shields.io/badge/Web-Interface-61DAFB?style=for-the-badge)
 
-<p align="center">
-  <img src="eggbot.jpg" alt="EggBot utilizado para pintar ou desenhar em um ovo" width="400" />
-</p>
+[![EggBot](docs/capa.jpeg)](docs/capa.jpeg)
 
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=F3q-DkTBnXs"><strong>Ver vídeo de demonstração no YouTube</strong></a>
-</p>
+## Sobre o projeto
 
-## Sumário
+O objetivo é transformar o EggBot em um plotter IoT para superfícies ovais: desenhar ou enviar uma imagem pelo celular, preparar a trajetória, visualizar o resultado e acompanhar a execução no ovo. O EggBot e o EggDuino fornecem a base mecânica e o controle dos motores; este projeto desenvolve a interface, o processamento e a comunicação entre as partes.
 
-- [Visão geral](#visão-geral)
-- [Objetivos](#objetivos)
-- [Principais recursos](#principais-recursos)
-- [Arquitetura do projeto](#arquitetura-do-projeto)
-- [Hardware](#hardware)
-- [Software](#software)
-- [Estrutura do repositório](#estrutura-do-repositório)
-- [Como usar](#como-usar)
-- [Aplicação em divulgação científica](#aplicação-em-divulgação-científica)
-- [Demonstração em vídeo](#demonstração-em-vídeo)
-- [Continuidade do projeto](#continuidade-do-projeto)
-- [Referências](#referências)
-- [Licença](#licença)
+A meta é operar pela rede local do ESP32 sem manter um computador conectado ao robô. Atualmente, a interface React permite desenho livre e importação de contornos SVG. A vetorização de imagens raster e a instalação do build React no ESP32 ainda são etapas futuras.
 
-## Visão geral
+## Comece pela interface
 
-O **EggBot** é um projeto de robótica voltado à pintura ou desenho em ovos. A proposta consiste em controlar o movimento do objeto e da ferramenta de desenho para criar padrões, formas ou ilustrações sobre uma superfície curva.
-
-No contexto da **Robotnik**, o EggBot funciona como um protótipo de demonstração muito visual para apresentar conceitos de programação, controle de movimento, motores, montagem mecânica, eletrônica embarcada e integração entre software e hardware.
-
-Este repositório faz parte da organização **Robotnik - DAINF-PB**, projeto de extensão do DAINF da UTFPR - Campus Pato Branco voltado à robótica, prototipagem e divulgação científica.
-
-## Objetivos
-
-- Documentar o funcionamento geral do EggBot utilizado pela Robotnik.
-- Registrar componentes, arquivos, dependências e referências do projeto.
-- Facilitar manutenção, reaproveitamento e continuidade por novos integrantes.
-- Servir como material de apoio para oficinas, eventos e demonstrações de robótica.
-- Apresentar de forma prática a relação entre movimento controlado, desenho e programação.
-
-## Principais recursos
-
-- Pintura ou desenho em ovos.
-- Demonstração visual de robótica aplicada.
-- Controle de movimento em mais de um eixo.
-- Integração entre estrutura mecânica, motores, eletrônica e software.
-- Possibilidade de uso em escolas, feiras, oficinas e eventos acadêmicos.
-
-## Arquitetura do projeto
-
-A arquitetura pode ser entendida em quatro camadas principais:
-
-| Camada | Função |
-|---|---|
-| Mecânica | Estrutura física, suporte do ovo, suporte da caneta/ferramenta e acoplamentos. |
-| Eletrônica | Microcontrolador, drivers/módulos de acionamento, motores, alimentação e conexões. |
-| Software embarcado | Código responsável por movimentação, sequência de desenho e acionamento dos atuadores. |
-| Demonstração | Uso do protótipo em eventos, oficinas e ações de divulgação científica. |
-
-## Hardware
-
-> Ajustar esta lista conforme a versão real do protótipo disponível no repositório.
-
-- Estrutura mecânica do EggBot
-- Suporte para ovo ou objeto oval
-- Suporte para caneta ou ferramenta de marcação
-- Microcontrolador compatível com o código do projeto
-- Motores e/ou servomotores conforme a montagem
-- Módulos de acionamento, quando aplicável
-- Fonte de alimentação adequada
-- Jumpers, conectores, parafusos e suportes mecânicos
-
-## Software
-
-> Ajustar esta lista conforme o código real do projeto.
-
-- C/C++ em ambiente Arduino ou compatível
-- Bibliotecas de controle de motores/servos, quando aplicável
-- Código de movimentação e sequência de desenho
-- Arquivos auxiliares de configuração ou padrões de desenho, se existirem
-
-## Estrutura do repositório
-
-> Esta seção deve ser atualizada conforme a organização real dos arquivos.
-
-Sugestão de estrutura:
-
-```txt
-docs/
-  assets/
-    capa-eggbot.jpg
-src/
-  codigo-principal/
-README.md
-LICENSE
-```
-
-## Como usar
-
-> Esta seção deve ser ajustada conforme a versão atual do código e da montagem.
-
-1. Clone o repositório:
+Use Node.js 22.12+ na linha 22, ou uma versão compatível indicada em `interface_web/package.json`.
 
 ```bash
-git clone URL_DO_REPOSITORIO_EGGBOT
-cd EggBot
+git clone https://github.com/GuilhermeRds1921/Egg-Bot.git
+cd Egg-Bot/interface_web
+npm ci
+npm run dev
 ```
 
-2. Confira a documentação de montagem mecânica e elétrica.
-3. Verifique a alimentação e as conexões dos motores/atuadores.
-4. Instale as dependências do ambiente usado no projeto.
-5. Carregue o código no microcontrolador.
-6. Faça testes sem o ovo primeiro, observando o movimento dos eixos.
-7. Ajuste posição da caneta, pressão e fixação do ovo.
-8. Execute uma demonstração simples antes de usar padrões mais complexos.
+Abra o endereço mostrado no terminal, normalmente `http://localhost:5173`.
 
-## Aplicação em divulgação científica
+Por padrão, o estúdio funciona em **modo demonstração**, sem equipamento conectado. Desenho livre, padrões, importação SVG, download de trabalhos, prévia do ovo e controles de impressão podem ser explorados no simulador.
 
-O EggBot é um projeto interessante para divulgação científica porque transforma conceitos técnicos em uma demonstração visual e intuitiva. Durante uma apresentação, é possível explicar como comandos de software se transformam em movimento físico, como a mecânica limita ou viabiliza o desenho, e como a eletrônica faz a ponte entre programação e ação.
+Para abrir pelo celular na mesma rede do computador, execute `npm run dev -- --host 0.0.0.0` e use o endereço de rede mostrado pelo Vite.
 
-Esse tipo de protótipo ajuda estudantes e visitantes a perceberem que robótica não se limita a robôs humanoides ou veículos: ela também pode aparecer em máquinas de desenho, automação criativa, dispositivos de fabricação e ferramentas educacionais.
+## Funcionamento
 
-## Demonstração em vídeo
+```mermaid
+flowchart LR
+    Web[Navegador: desenho e SVG] --> Job[Trabalho EGGJOB com CRC]
+    Job --> ESP[ESP32: API e planejamento]
+    ESP -->|UART 9600 baud| Uno[Arduino Uno: EggDuino]
+    Uno --> Motor[Motores e servo]
+    Python[Python: diagnóstico opcional] -->|USB serial| Uno
+```
 
-Vídeo de demonstração informado para o projeto:
+O firmware ESP32 já contém uma interface embarcada anterior. A nova interface React usa o mesmo contrato de API e pode acessá-lo pelo proxy do servidor de desenvolvimento. **O build React ainda não é incorporado ao firmware**; essa integração é uma etapa posterior. Veja as [instruções da interface](interface_web/README.md#conexão-com-o-esp32).
 
-[https://www.youtube.com/watch?v=F3q-DkTBnXs](https://www.youtube.com/watch?v=F3q-DkTBnXs)
+As responsabilidades estão divididas em três partes:
 
-## Continuidade do projeto
+- **Interface e plotagem:** edição dos traços, importação SVG, simplificação, prévia e geração do trabalho `EGGJOB 1` com CRC.
+- **ESP32:** rede Wi-Fi, API, recebimento do trabalho, planejamento e envio dos comandos ao Uno.
+- **Arduino Uno + EggDuino:** execução dos comandos e acionamento dos motores e do servo da caneta.
 
-Sugestões para evolução:
+O fluxo atual usa `EGGJOB 1` e comandos do protocolo EggDuino. Não há geração de G-code implementada.
 
-- Adicionar fotos reais da montagem.
-- Adicionar diagrama elétrico.
-- Documentar pinos utilizados no microcontrolador.
-- Registrar dependências e versão das bibliotecas.
-- Criar exemplos de padrões simples de desenho.
-- Incluir vídeos curtos de funcionamento.
-- Documentar problemas comuns, como desalinhamento, pressão excessiva da caneta ou escorregamento do ovo.
-- Criar uma versão em artigo técnico a partir do arquivo LaTeX deste pacote.
+A prévia é ilustrativa. O resultado físico depende da calibração, da mecânica e da forma do ovo. Os testes automatizados não substituem a validação no equipamento.
 
-## Referências
+## Estrutura
 
-- Vídeo de demonstração do projeto: [EggBot no YouTube](https://www.youtube.com/watch?v=F3q-DkTBnXs)
-- Documentação interna do projeto Robotnik, quando disponível.
-- Referências adicionais devem ser adicionadas conforme os materiais realmente utilizados no repositório.
+```text
+Egg-Bot/
+├── interface_web/                  Aplicação React, testes e simulador
+│   └── legacy/                    Prévia HTML anterior, preservada
+├── firmware/
+│   ├── esp32/eggbot_etapa5/        API, planejamento e página embarcada
+│   └── uno/EggDuino/              Acionamento dos motores e servo
+├── preplotter/                    Ferramenta Python de diagnóstico por USB
+├── exemplos_padroes.py             Exemplos dos geradores Python
+├── requirements.txt               Dependência do pré-plotter
+├── eggbot.py / eggbot_conf.py      Driver independente do Inkscape
+├── docs/                          Análises, proposta, relatório e imagens
+└── .github/workflows/ci.yml        Verificações automáticas
+```
 
-## Organização
+## Ferramenta Python opcional
 
-**Robotnik - DAINF-PB**  
-Departamento Acadêmico de Informática - UTFPR, Campus Pato Branco.
+`preplotter/` foi mantido para diagnóstico de bancada. Não é dependência da interface React nem do caminho ESP32 → Uno.
 
-Orientador: Vinicius Pegorini
-- Aluno: Guilherme Rodrigues dos Santos
-- Aluno: Laura Armiliato Sangalli
-- Aluno: Lucas Tarcísio Morais Pies
+Na raiz do repositório:
 
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+python3 -B -m preplotter.main --help
+python3 -B exemplos_padroes.py
+```
+
+No Windows, ative o ambiente com `.venv\Scripts\activate`. Os exemplos acima não movimentam o hardware. A CLI só executa movimentos com `--run`; sem essa opção, exibe um aviso, sem gerar uma prévia.
+
+Consulte o [guia do pré-plotter](preplotter/README.md) antes dos testes com a máquina. O driver Inkscape da raiz é um caminho separado e requer dependências que não estão em `requirements.txt`.
+
+## Verificação
+
+Na pasta `interface_web/`:
+
+```bash
+npm test
+npx playwright install chromium
+npm run test:e2e
+npm run build
+```
+
+Na raiz, confira os links dos documentos com `python3 scripts/check_docs.py`.
+
+O workflow de CI executa instalação reproduzível, testes de dados e navegador, build da interface, verificação dos links e execução do Python sem hardware. Ele não publica um site, grava placas ou aciona motores.
+
+## Estado atual
+
+- Interface React responsiva, geração `EGGJOB 1`, SVG, prévia e controles implementados.
+- Build e testes da interface disponíveis para execução local e na CI.
+- Firmware ESP32 recebido e preservado, com configuração, upload e controle da impressão.
+- Firmware Uno e ferramenta Python mantidos para integração e diagnóstico.
+- Validação da interface React no hardware e correções do executor pendentes; veja a [análise de arquitetura](docs/ANALISE_ARQUITETURA.md).
+
+## Próximas etapas
+
+- Processar imagens raster e vetorizar contornos em trajetórias.
+- Refinar a adaptação geométrica e a calibração para diferentes superfícies ovais.
+- Integrar a distribuição da interface React ao ESP32 para uso independente do computador.
+- Validar a comunicação e a execução completa no equipamento, incluindo as pendências do executor.
+
+## Documentação
+
+- [Interface React: desenvolvimento e conexão](interface_web/README.md)
+- [Firmwares: organização e preparação](firmware/README.md)
+- [Pré-plotter: diagnóstico por USB](preplotter/README.md)
+- [Índice dos documentos e levantamentos históricos](docs/README.md)
+- [Como contribuir](CONTRIBUTING.md)
+
+## Créditos
+
+O projeto usa os trabalhos [EggDuino de plex3r](https://github.com/plex3r/EggDuino) e [EggBot de Evil Mad Scientist](https://github.com/evil-mad/EggBot), além das bibliotecas distribuídas com seus fontes. Os avisos de autoria e licença originais foram preservados. Consulte [THIRD_PARTY.md](THIRD_PARTY.md) para localizar essas informações.
+
+Referências de montagem: [vídeo](https://www.youtube.com/watch?v=F3q-DkTBnXs) e [modelo mecânico](https://www.thingiverse.com/thing:3431363).

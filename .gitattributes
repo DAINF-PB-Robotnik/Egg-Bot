@@ -1,0 +1,25 @@
+* text=auto
+*.py text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.ino text eol=lf
+*.h text eol=lf
+*.cpp text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.txt text eol=lf
+*.tex text eol=lf
+*.svg text eol=lf
+*.egg text eol=lf
+*.pdf binary
+*.jpeg binary
+*.jpg binary
+*.png binary
+*.woff2 binary
+
+# Preserve formatting of the received third-party firmware sources.
+firmware/uno/EggDuino/** -whitespace

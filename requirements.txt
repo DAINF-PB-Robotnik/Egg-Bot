@@ -1,0 +1,2 @@
+# Dependência da ferramenta opcional de diagnóstico preplotter/.
+pyserial==3.5
