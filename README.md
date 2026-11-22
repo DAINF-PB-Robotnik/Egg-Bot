@@ -1,8 +1,19 @@
-# Egg-Bot · Egg Studio
+# EggBot IoT Plotter · Egg Studio
 
 Desenhe no navegador, visualize o traço na superfície de um ovo e prepare um trabalho para o EggBot. O projeto reúne uma interface em **React + Tailwind**, um controlador web para **ESP32** e o firmware **EggDuino para Arduino Uno**.
 
-![Montagem do Egg-Bot](docs/imagem02.jpeg)
+![Arduino](https://img.shields.io/badge/Arduino-Uno-149ddd?style=for-the-badge)
+![ESP32](https://img.shields.io/badge/ESP32-IoT-E7352C?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-Plotter-3776AB?style=for-the-badge)
+![Web](https://img.shields.io/badge/Web-Interface-61DAFB?style=for-the-badge)
+
+[![EggBot](docs/capa.jpeg)](docs/capa.jpeg)
+
+## Sobre o projeto
+
+O objetivo é transformar o EggBot em um plotter IoT para superfícies ovais: desenhar ou enviar uma imagem pelo celular, preparar a trajetória, visualizar o resultado e acompanhar a execução no ovo. O EggBot e o EggDuino fornecem a base mecânica e o controle dos motores; este projeto desenvolve a interface, o processamento e a comunicação entre as partes.
+
+A meta é operar pela rede local do ESP32 sem manter um computador conectado ao robô. Atualmente, a interface React permite desenho livre e importação de contornos SVG. A vetorização de imagens raster e a instalação do build React no ESP32 ainda são etapas futuras.
 
 ## Comece pela interface
 
@@ -33,6 +44,14 @@ flowchart LR
 ```
 
 O firmware ESP32 já contém uma interface embarcada anterior. A nova interface React usa o mesmo contrato de API e pode acessá-lo pelo proxy do servidor de desenvolvimento. **O build React ainda não é incorporado ao firmware**; essa integração é uma etapa posterior. Veja as [instruções da interface](interface_web/README.md#conexão-com-o-esp32).
+
+As responsabilidades estão divididas em três partes:
+
+- **Interface e plotagem:** edição dos traços, importação SVG, simplificação, prévia e geração do trabalho `EGGJOB 1` com CRC.
+- **ESP32:** rede Wi-Fi, API, recebimento do trabalho, planejamento e envio dos comandos ao Uno.
+- **Arduino Uno + EggDuino:** execução dos comandos e acionamento dos motores e do servo da caneta.
+
+O fluxo atual usa `EGGJOB 1` e comandos do protocolo EggDuino. Não há geração de G-code implementada.
 
 A prévia é ilustrativa. O resultado físico depende da calibração, da mecânica e da forma do ovo. Os testes automatizados não substituem a validação no equipamento.
 
@@ -93,6 +112,13 @@ O workflow de CI executa instalação reproduzível, testes de dados e navegador
 - Firmware ESP32 recebido e preservado, com configuração, upload e controle da impressão.
 - Firmware Uno e ferramenta Python mantidos para integração e diagnóstico.
 - Validação da interface React no hardware e correções do executor pendentes; veja a [análise de arquitetura](docs/ANALISE_ARQUITETURA.md).
+
+## Próximas etapas
+
+- Processar imagens raster e vetorizar contornos em trajetórias.
+- Refinar a adaptação geométrica e a calibração para diferentes superfícies ovais.
+- Integrar a distribuição da interface React ao ESP32 para uso independente do computador.
+- Validar a comunicação e a execução completa no equipamento, incluindo as pendências do executor.
 
 ## Documentação
 
