@@ -1,23 +1,27 @@
 # Pré-Plotter EggBot
 
-Módulo Python para controlar o EggBot via Arduino UNO (firmware EggDuino) pela linha de comando.
+Ferramenta opcional de diagnóstico por USB para controlar o Arduino Uno com EggDuino. Não é necessária para a interface React nem para o fluxo ESP32 → Uno.
+
+Execute os comandos abaixo na **raiz do repositório**.
 
 ## Rápido Começo
 
 ### Instalação
 
 ```bash
-pip install -r ../requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
 ```
 
 ### Uso Básico
 
-Modo simulação (seguro, sem movimento):
+Conferir a CLI sem abrir a serial (não calcula trajetórias nem gera prévia):
 ```bash
 python3 -m preplotter.main --port /dev/ttyACM0
 ```
 
-Teste de movimento validado:
+Teste de movimento real, com a máquina conectada e preparada:
 ```bash
 python3 -m preplotter.main --port /dev/ttyACM0 --run --test reference
 ```
@@ -62,4 +66,6 @@ python3 -m preplotter.main \
 
 ## Documentação Completa
 
-Veja [../docs/preplotter.md](../docs/preplotter.md)
+Veja o [guia técnico para GPT](../docs/README_GPT.md), com o mapa do código, entradas e saídas, protocolo serial e proposta de integração com o celular.
+
+O guia técnico é um levantamento histórico. A organização atual está no [README principal](../README.md) e os firmwares estão em [firmware/](../firmware/README.md).

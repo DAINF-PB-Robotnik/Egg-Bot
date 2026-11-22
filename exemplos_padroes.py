@@ -212,7 +212,7 @@ if __name__ == "__main__":
    segments = PatternGenerator.sine_wave(amplitude=600, num_points=128)
    # Executar com preplotter.plot_line() para cada segmento
 
-Documentação: docs/preplotter.md
-Testes: TESTE_PADROES_RESULTADO.md
+Documentação: preplotter/README.md
+Análise de arquitetura: docs/ANALISE_ARQUITETURA.md
 """)
     print("="*60 + "\n")

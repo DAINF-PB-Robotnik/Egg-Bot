@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
+
+# Frontend: dependências, builds e resultados locais
+node_modules/
+dist/
+build/
+coverage/
+test-results/
+playwright-report/
+blob-report/
+*.tsbuildinfo
+
+# Configuração privada; exemplos são versionados
+.env
+.env.*
+!.env.example
+senha_wifi.h
+
+# Compilação embarcada
+.pio/
+*.elf
+*.hex
+*.bin
+*.o
+*.a
+
+# Auxiliares LaTeX; PDFs são versionados
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+# Sistema, editor e temporários
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+*~
